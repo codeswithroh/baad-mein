@@ -92,8 +92,8 @@ function dueLabel(n: Note, now: Date): string {
   return fmtDay(d) + time;
 }
 
-function line(n: Note, now: Date, extra = ''): string {
-  const due = dueLabel(n, now);
+function line(n: Note, now: Date, extra = '', showDue = true): string {
+  const due = showDue ? dueLabel(n, now) : '';
   return `<li class="item" data-note="${n.i}">
     <span class="what">${esc(n.what)}</span>
     ${due ? `<span class="due ${due.includes('overdue') ? 'late' : ''}">${due}</span>` : ''}
@@ -124,7 +124,9 @@ function render(notes: Note[], now: Date, source: string) {
     const owed = d.money.filter((n) => n.dir === 'owes_me');
     const owe = d.money.filter((n) => n.dir === 'i_owe');
     const sum = (ns: Note[]) => ns.reduce((s, n) => s + (n.amount ?? 0), 0);
-    const row = (n: Note) => line(n, now, `<span class="amt">${n.amount ? rupees(n.amount) : ''}</span>`);
+    // "1500 debe" says nothing about who; Gemma copied the name separately, so show it.
+    const named = (n: Note) => (n.who && !n.what.toLowerCase().includes(n.who.toLowerCase()) ? { ...n, what: `${n.who}: ${n.what}` } : n);
+    const row = (n: Note) => line(named(n), now, `<span class="amt">${n.amount ? rupees(n.amount) : ''}</span>`);
     parts.push(
       section(
         'money',
@@ -169,7 +171,7 @@ function render(notes: Note[], now: Date, source: string) {
         'letgo',
         `Let go of ${d.counts.letGo}`,
         'permission granted',
-        d.letGo.map((g) => `<p class="sub">${g.notes.length} · ${esc(g.why)}</p><ul class="faded">${g.notes.map((n) => (n.kind === 'read' ? readLine(n, now) : line(n, now))).join('')}</ul>`).join(''),
+        d.letGo.map((g) => `<p class="sub">${g.notes.length} · ${esc(g.why)}</p><ul class="faded">${g.notes.map((n) => (n.kind === 'read' ? readLine(n, now) : line(n, now, '', false))).join('')}</ul>`).join(''),
         false,
       ),
     );
@@ -180,11 +182,24 @@ function render(notes: Note[], now: Date, source: string) {
   show('card');
 }
 
+/** "youtube.com/watch?v=arj7…" instead of a 90-character URL. */
+function shortUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    const rest = (u.pathname + u.search).replace(/\/$/, '');
+    return u.hostname.replace(/^www\./, '') + (rest.length > 22 ? rest.slice(0, 22) + '…' : rest);
+  } catch {
+    return url.slice(0, 40);
+  }
+}
+
 function readLine(n: Note, now: Date): string {
   const link = n.links[0];
-  const label = n.links.length && n.what && n.what !== n.text && !/^[A-Z][a-z]+(, [A-Z][a-z]+)*$/.test(n.what) ? n.what : n.text.replace(/https?:\/\/\S+/g, '').trim() || link?.url;
+  // What to call it: the note's own words if it has any besides the link, else a short address.
+  const words = n.text.replace(/https?:\/\/\S+|www\.\S+/g, '').trim();
+  const label = words || (link ? shortUrl(link.url) : n.text);
   return `<li class="item" data-note="${n.i}">
-    <span class="what">${link ? `<span class="site">${link.site}</span> ` : ''}${esc(label ?? '')}</span>
+    <span class="what">${link ? `<span class="site">${link.site}</span> ` : ''}${esc(label)}</span>
     ${link ? `<a class="open" href="${esc(link.url)}" target="_blank" rel="noopener">open</a>` : ''}
     <span class="src">from ${fmtDay(n.at, now)}</span>
   </li>`;

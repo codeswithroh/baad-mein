@@ -9,7 +9,7 @@ export interface Link {
 const SITES: [RegExp, string][] = [
   [/youtu\.?be/, 'YouTube'],
   [/instagram\.com/, 'Instagram'],
-  [/(twitter|x)\.com/, 'X'],
+  [/\b(twitter|x)\.com/, 'X'], // \b: "netflix.com" ends in "x.com"
   [/linkedin\.com/, 'LinkedIn'],
   [/reddit\.com/, 'Reddit'],
   [/github\.com/, 'GitHub'],

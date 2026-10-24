@@ -135,6 +135,10 @@ export function applyGuess(note: Note, g: Guess | undefined): Note {
   // Only to-dos get a due date. "Ankit ko 1200 dena hai dinner ka" is about money, not about when.
   if (whenQuote.trim() && n.kind === 'todo') {
     n.when = resolveWhen(whenQuote, n.text, n.at);
+    // Gemma copied words that aren't a day ("office party ke liye") but the note has one ("30 oct"):
+    // read the note's own day words instead of giving up.
+    const own = n.text.match(DAY_WORDS)?.[0];
+    if (!n.when.date && own && own !== whenQuote) n.when = resolveWhen(own, n.text, n.at);
     if (!n.when.sure) {
       n.sure = false;
       n.why = n.when.why;

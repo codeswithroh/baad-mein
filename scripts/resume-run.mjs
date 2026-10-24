@@ -1,0 +1,21 @@
+// Close the tab halfway through, open it again, and check the read picks up where it stopped.
+import { chromium } from 'playwright';
+const base = process.env.BASE ?? 'http://localhost:5179';
+const file = process.argv[2];
+const ctx = await chromium.launchPersistentContext('.eval-profile', { headless: false, args: ['--enable-unsafe-webgpu'], viewport: { width: 390, height: 844 } });
+let page = ctx.pages()[0] ?? (await ctx.newPage());
+await page.goto(base);
+await page.evaluate(() => indexedDB.deleteDatabase('keyval-store'));
+await page.reload();
+await page.locator('#file').setInputFiles(file);
+await page.waitForFunction(() => /Read (\d+) of/.test(document.querySelector('#readCount')?.textContent ?? '') && Number((document.querySelector("#readCount").textContent.match(/Read (\d+)/) || [0,0])[1]) >= 50, null, { timeout: 600_000 });
+console.log('before close:', await page.locator('#readCount').textContent());
+await page.close();
+page = await ctx.newPage();
+await page.goto(base);
+await page.locator('#file').setInputFiles(file);
+await page.waitForFunction(() => /picked up/.test(document.querySelector('#readCount')?.textContent ?? '') || document.querySelector('#card.active'), null, { timeout: 600_000 });
+console.log('after reopen:', await page.locator('#readCount').textContent());
+await page.locator('#card.active').waitFor({ timeout: 600_000 });
+console.log('card:', await page.locator('#cardTitle').textContent());
+await ctx.close();

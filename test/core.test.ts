@@ -53,6 +53,8 @@ test('links', () => {
   assert.equal(onlyLinks('https://youtu.be/Jx8fdC1oQ7c'), true);
   assert.equal(onlyLinks('https://maps.app.goo.gl/x8KqT2 new biryani place'), false);
   assert.equal(findLinks('https://www.instagram.com/reel/C9xYz')[0].site, 'Instagram');
+  assert.equal(findLinks('https://www.netflix.com/title/81231974')[0].site, 'Watch');
+  assert.equal(findLinks('https://x.com/naval/status/1')[0].site, 'X');
 });
 
 test('copied words are checked, not trusted', () => {
