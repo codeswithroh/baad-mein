@@ -1,0 +1,70 @@
+{
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+  "at": "2026-10-24T02:02:45.398Z",
+  "dev": {
+    "set": "dev",
+    "notes": 40,
+    "kindRight": 38,
+    "kindByCode": 10,
+    "gemmaNotes": 30,
+    "gemmaKindRight": 28,
+    "confusion": {
+      "read": {
+        "read": 5
+      },
+      "buy": {
+        "buy": 4,
+        "todo": 1
+      },
+      "todo": {
+        "todo": 9
+      },
+      "keep": {
+        "keep": 6,
+        "buy": 1
+      },
+      "secret": {
+        "secret": 4
+      },
+      "money": {
+        "money": 4
+      },
+      "noise": {
+        "noise": 3
+      },
+      "done": {
+        "done": 3
+      }
+    },
+    "dates": {
+      "total": 8,
+      "right": 8,
+      "flagged": 0,
+      "wrong": 0,
+      "wrongList": []
+    },
+    "money": {
+      "total": 4,
+      "dirRight": 3,
+      "flagged": 1
+    },
+    "secrets": {
+      "total": 4,
+      "found": 4
+    },
+    "copied": {
+      "asked": 19,
+      "exact": 19,
+      "rewritten": 0
+    },
+    "doneLinked": 2,
+    "ms": 25717.09999999404,
+    "msPerBatch": 6418.650000002235,
+    "replies": [
+      "[{\"n\":1,\"kind\":\"buy\",\"what\":\"atta 5kg, toor dal, Surf excel\",\"when\":\"\",\"who\":\"\"},\n{\"n\":2,\"kind\":\"todo\",\"what\":\"Car insurance renew karna hai\",\"when\":\"20th se pehle\",\"who\":\"\"},\n{\"n\":3,\"kind\":\"keep\",\"what\":\"policy no 2311/4588/221\",\"when\":\"\",\"who\":\"\"},\n{\"n\":4,\"kind\":\"keep\",\"what\":\"idea: app that reminds you to drink water but in your mom's voice\",\"when\":\"\",\"who\":\"\"},\n{\"n\":5,\"kind\":\"money\",\"what\":\"Ankit ko 1200 dena\",\"when\":\"dinner ka\",\"who\":\"Ankit\"},\n{\"n\":6,\"kind\":\"done\",\"what\":\"renewed car insurance ✅\",\"when\":\"\",\"who\":\"\"},\n{\"n\":7,\"kind\":\"keep\",\"what\":\"Dr. Sen clinic 033 2465 1180, Mon-Sat 5-8pm\",\"when\":\"\",\"who\":\"Dr. Sen clinic\"},\n{\"n\":8,\"kind\":\"read\",\"what\":\"The Psychology of Money\",\"when\":\"\",\"who\":\"\"}]",
+      "[{\"n\":1,\"kind\":\"todo\",\"what\":\"call landlord about geyser\",\"when\":\"kal\",\"who\":\"\"},\n{\"n\":2,\"kind\":\"buy\",\"what\":\"shoe size UK 9, kurta size 40\",\"when\":\"\",\"who\":\"\"},\n{\"n\":3,\"kind\":\"money\",\"what\":\"Priya se 750 lena\",\"when\":\"\",\"who\":\"Priya\"},\n{\"n\":4,\"kind\":\"buy\",\"what\":\"milk bread eggs\",\"when\":\"\",\"who\":\"\"},\n{\"n\":5,\"kind\":\"todo\",\"what\":\"submit reimbursement form\",\"when\":\"friday\",\"who\":\"\"},\n{\"n\":6,\"kind\":\"todo\",\"what\":\"Maa er jonno blood pressure er osudh kinte hobe\",\"when\":\"\",\"who\":\"Maa\"},\n{\"n\":7,\"kind\":\"keep\",\"what\":\"Gas cylinder booking number 7718955555\",\"when\":\"\",\"who\":\"\"},\n{\"n\":8,\"kind\":\"read\",\"what\":\"watch Panchayat S4\",\"when\":\"\",\"who\":\"\"}]",
+      "[{\"n\":1,\"kind\":\"todo\",\"what\":\"electricity bill 12 tarikh tak bharna hai\",\"when\":\"12 tarikh tak\",\"who\":\"\"},\n{\"n\":2,\"kind\":\"money\",\"what\":\"Babai ke 3000 ferot dite hobe\",\"when\":\"\",\"who\":\"Babai\"},\n{\"n\":3,\"kind\":\"done\",\"what\":\"gym done 💪\",\"when\":\"\",\"who\":\"\"},\n{\"n\":4,\"kind\":\"buy\",\"what\":\"onions tomato coriander\",\"when\":\"\",\"who\":\"\"},\n{\"n\":5,\"kind\":\"done\",\"what\":\"electricity bill paid\",\"when\":\"\",\"who\":\"\"},\n{\"n\":6,\"kind\":\"keep\",\"what\":\"https://maps.app.goo.gl/x8KqT2 new biryani place\",\"when\":\"\",\"who\":\"\"},\n{\"n\":7,\"kind\":\"todo\",\"what\":\"remind Neha about Diwali gift budget\",\"when\":\"\",\"who\":\"Neha\"},\n{\"n\":8,\"kind\":\"todo\",\"what\":\"passport renewal appointment 28 oct 10am\",\"when\":\"28 oct 10am\",\"who\":\"\"}]",
+      "[{\"n\":1,\"kind\":\"money\",\"what\":\"Kunal owes me 2k for Goa stay\",\"when\":\"\",\"who\":\"Kunal\"},\n{\"n\":2,\"kind\":\"todo\",\"what\":\"car wash\",\"when\":\"Sunday\",\"who\":\"\"},\n{\"n\":3,\"kind\":\"buy\",\"what\":\"Dhaniya, adrak, nimbu\",\"when\":\"\",\"who\":\"\"},\n{\"n\":4,\"kind\":\"todo\",\"what\":\"dentist 6 baje\",\"when\":\"parso\",\"who\":\"\"},\n{\"n\":5,\"kind\":\"keep\",\"what\":\"quote: \\\"Nothing is so urgent that it can't wait till you're rested\\\"\", \"when\":\"\",\"who\":\"\"},\n{\"n\":6,\"kind\":\"todo\",\"what\":\"laundry dena\",\"when\":\"kal\",\"who\":\"\"}]"
+    ]
+  }
+}

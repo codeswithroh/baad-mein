@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4efe3" />
+  <title>Baad Mein</title>
+  <meta name="description" content="Your WhatsApp chat with yourself, read slowly by Gemma on your own device, turned into one card in the morning." />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="Baad Mein: the chat you send things to for later, read while you sleep" />
+  <meta property="og:image" content="/cover.png" />
+</head>
+<body>
+  <main id="app">
+    <!-- HOME -->
+    <section id="home" class="screen active">
+      <p class="eyebrow">बाद में · later</p>
+      <h1>Baad Mein</h1>
+      <p class="lede">Everyone has a WhatsApp chat with themselves. Links, <em>“dahi bread aur maggi”</em>, <em>“Raju ko 500 dena”</em>, an OTP from March. Things you'll deal with later.</p>
+      <p class="lede">Gemma reads that chat slowly, on your own device, and gives you one card in the morning: what's due, what to buy, who owes what, and what you can finally let go.</p>
+
+      <div class="actions">
+        <button class="btn primary" id="example">See an example</button>
+        <label class="btn" for="file">Read my chat</label>
+        <input id="file" type="file" accept=".txt,.zip,text/plain,application/zip" hidden />
+      </div>
+
+      <details class="how">
+        <summary>How to get your chat out of WhatsApp</summary>
+        <ol>
+          <li>Open the chat with yourself (it has your name and says “(You)”).</li>
+          <li>Tap <b>⋮</b> → <b>More</b> → <b>Export chat</b> → <b>Without media</b>. On iPhone, tap your name → <b>Export Chat</b>.</li>
+          <li>Save the file, then choose it with <b>Read my chat</b>. A .zip from iPhone works too.</li>
+        </ol>
+      </details>
+
+      <ul class="promises">
+        <li><b>Nothing leaves this device.</b> Gemma 4 runs inside this tab. No account, no server, no API key.</li>
+        <li><b>OTPs and card numbers are never shown to the model.</b> Plain code finds them first and puts them on a “delete these” list.</li>
+        <li><b>Slow is fine.</b> Leave it running overnight. If the tab closes, it picks up where it stopped.</li>
+      </ul>
+      <p class="fine" id="gpuNote"></p>
+    </section>
+
+    <!-- READING -->
+    <section id="reading" class="screen">
+      <p class="eyebrow" id="readEyebrow">Reading slowly</p>
+      <h2 id="readTitle">Gemma is reading your notes</h2>
+      <div class="branch" aria-hidden="true"><span class="sloth" id="sloth">🦥</span></div>
+      <p class="count" id="readCount">Getting ready…</p>
+      <p class="fine" id="readNote">You can leave this running and come back in the morning. If the tab closes, opening the same chat again picks up where it stopped.</p>
+      <button class="btn" id="stop">Stop for now</button>
+    </section>
+
+    <!-- CARD -->
+    <section id="card" class="screen">
+      <header class="card-head">
+        <p class="eyebrow" id="cardDate"></p>
+        <h2 id="cardTitle"></h2>
+        <p class="lede" id="cardSub"></p>
+        <p class="fine" id="cardSource"></p>
+      </header>
+      <div id="sections"></div>
+      <div class="actions sticky">
+        <button class="btn primary" id="copy">Copy as a WhatsApp message</button>
+        <button class="btn" id="again">Start over</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
